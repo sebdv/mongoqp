@@ -20,8 +20,8 @@ If you need to connect to a specific IP, other than your localhost, edit the `sr
 ---
 ### About mongoqp
 
-**mongoqp** is a frontend for MongoDB's [query profiler][] collections (i.e.
-`db.system.profile`), built using [Silex][] and [MongoDB PHP Library][].
+**mongoqp** is a frontend for MongoDB's query profiler collections (i.e.
+`db.system.profile`), built using Silex and MongoDB PHP Library.
 
 It currently supports:
 
