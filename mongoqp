@@ -17,7 +17,12 @@ case "$1" in
 	;;
 
 	start)
-	docker run -d -p8888:8888 --name mach-mongoqp mach-mongoqp
+	params=""
+	PORT=8888
+	[ -n "$2" ] && params="-e URI=$2"
+	[ -n "$3" ] && params="$params -e PORT=$3" && PORT=$3
+	echo params $params port $PORT or $3
+	docker run -d -p${PORT}:${PORT} --name mach-mongoqp $params mach-mongoqp php -S0:${PORT} -t web
 	echo
 	echo ">> mongoqp running at http://localhost:8888"
 	echo
@@ -30,4 +35,5 @@ case "$1" in
 
 	*)
 	echo "Usage: $0 (build | start | stop)"
+	echo "start takes 2 optional parameters: <URI> <PORT>"
 esac

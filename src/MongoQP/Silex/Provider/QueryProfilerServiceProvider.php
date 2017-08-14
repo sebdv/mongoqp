@@ -13,7 +13,7 @@ class QueryProfilerServiceProvider implements ServiceProviderInterface
     {
         $app['mongodb.client'] = function() use ($app) {
             return new Client(
-                $app['mongodb.client.uri'],
+                getenv('URI') ? getenv('URI') : $app['mongodb.client.uri'],
                 $app['mongodb.client.uriOptions'],
                 $app['mongodb.client.driverOptions']
             );
